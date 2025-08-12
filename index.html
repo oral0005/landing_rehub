@@ -1,0 +1,294 @@
+<!doctype html>
+<html lang="ru">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>RehubPro — CRM для реабилитационных центров</title>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;600;700;800&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.11.3/font/bootstrap-icons.css">
+  <style>
+    :root{
+      --bg:#0f1724; --card:#0b1220; --muted:#9aa4b2; --accent:#2ECC71; --accent-2:#007BFF; --glass: rgba(255,255,255,0.03);
+      --radius:16px; --container:1200px;
+    }
+    *{box-sizing:border-box}
+    html,body{height:100%}
+    body{
+      margin:0; font-family:Inter,system-ui,-apple-system,Segoe UI, Roboto, 'Helvetica Neue', Arial;
+      background:linear-gradient(100deg,#061024 0%, #071428 100%); color:#e6eef6; -webkit-font-smoothing:antialiased;
+      -moz-osx-font-smoothing:grayscale; line-height:1.4;
+    }
+    .wrap{max-width:var(--container); margin:32px auto; padding:24px}
+
+    /* Header */
+    header{display:flex; align-items:center; justify-content:space-between; gap:16px}
+    .brand{display:flex; align-items:center; gap:14px}
+    .logo{width:48px; height:48px; border-radius:10px; background:linear-gradient(135deg,var(--accent),var(--accent-2)); display:flex; align-items:center; justify-content:center; font-weight:800}
+    .brand h1{margin:0; font-size:18px}
+    nav{display:flex; gap:12px; align-items:center}
+    .btn{background:var(--accent); color:#042023; padding:10px 16px; border-radius:10px; font-weight:700; border:0; cursor:pointer}
+    .btn-ghost{background:rgba(255,255,255,0.03); border:1px solid rgba(255,255,255,0.06); padding:9px 14px; border-radius:10px; color:#e6eef6; cursor:pointer}
+
+    /* Hero */
+    .hero{display:grid; grid-template-columns:1fr 540px; gap:32px; align-items:center; margin-top:80px}
+    .eyebrow{display:inline-block; background:var(--glass); padding:8px 12px; border-radius:999px; color:var(--muted); font-weight:600; font-size:13px}
+    h2{font-size:36px; margin:16px 0 12px}
+    p.lead{color:var(--muted); margin:0 0 24px}
+    .cta-row{display:flex; gap:12px}
+
+    /* placeholder screenshot card */
+    .screenshot-card{background:linear-gradient(180deg, rgba(255,255,255,0.02), rgba(255,255,255,0.01)); padding:18px; border-radius:14px; border:1px solid rgba(255,255,255,0.03)}
+    .screenshot{width:100%; height:360px; border-radius:12px; display:flex; align-items:center; justify-content:center;}
+    .screenshot small{display:block; margin-top:8px; color:var(--muted); font-size:13px}
+
+    /* Features grid */
+    .features{display:grid; grid-template-columns:repeat(3,1fr); gap:18px; margin:80px 0}
+    .feature{background:var(--card); padding:18px; border-radius:14px; border:1px solid rgba(255,255,255,0.03)}
+    .feature h3{margin:8px 0 6px}
+    .feature p{margin:0; color:var(--muted); font-size:14px}
+
+    /* Pricing */
+    .pricing{display:flex; gap:18px; margin:80px 0; align-items:stretch}
+    .price-card{flex:1; background:linear-gradient(180deg, rgba(255,255,255,0.02), rgba(255,255,255,0.01)); padding:22px; border-radius:14px; border:1px solid rgba(255,255,255,0.03)}
+    .price{font-size:28px; font-weight:800; margin:12px 0; display: flex; flex-direction: column; gap: 4px;}
+    .save{color:var(--accent); font-weight:700; font-size:20px;}
+
+    /* CTA band */
+    .cta-band{margin:80px 0; background:linear-gradient(90deg, rgba(46,204,113,0.08), rgba(0,123,255,0.06)); padding:20px; border-radius:12px; display:flex; justify-content:space-between; align-items:center}
+
+    /* Spacer */
+    .spacer{height: 80px;}
+
+    footer{margin-top:80px; color:var(--muted); font-size:14px; display:flex; justify-content:space-between; align-items:center}
+    .social-icons{display:flex; gap:12px; align-items:center}
+    .social-icon{width:36px; height:36px; background:rgba(255,255,255,0.05); border-radius:8px; display:flex; align-items:center; justify-content:center; color:var(--muted); text-decoration:none; transition:all 0.2s}
+    .social-icon:hover{background:rgba(255,255,255,0.1); color:#e6eef6}
+
+    /* Responsive */
+    @media (max-width:980px){
+      .wrap{padding:16px;}
+      header{flex-direction: column; align-items: flex-start;}
+      .brand{margin-bottom: 16px;}
+      nav{margin-left: -4px; flex-wrap: wrap;}
+      .hero{grid-template-columns:1fr; margin-top: 40px;}
+      h2{font-size:28px}
+      .cta-row{flex-direction: column; gap: 10px;}
+      .screenshot-card{padding:14px;}
+      .screenshot{height:260px}
+      .features{grid-template-columns:repeat(2,1fr)}
+      .features-screenshots{grid-template-columns:1fr;}
+      .pricing{flex-direction:column}
+      .cta-band{flex-direction:column; text-align: center; gap: 16px; padding: 16px;}
+      .cta-band div:first-child{margin-bottom: 8px;}
+      footer{flex-direction: column; text-align: center; gap: 16px;}
+    }
+
+    @media (max-width:560px){
+      .wrap{padding:12px;}
+      header{flex-direction: column; align-items: center; text-align: center;}
+      .brand{margin-bottom: 12px; flex-direction: column;}
+      .brand h1{font-size: 16px;}
+      .brand .muted{font-size: 12px;}
+      .logo{width:40px;height:40px}
+      nav{width:100%; justify-content: center; margin-left: 0; flex-wrap: wrap;}
+      .btn, .btn-ghost{width:100%;}
+      .hero{grid-template-columns:1fr; margin-top: 30px;}
+      h2{font-size:24px}
+      p.lead{font-size: 14px;}
+      .cta-row{flex-direction: column; gap: 10px;}
+      .screenshot{height:200px}
+      .features{grid-template-columns:1fr}
+      .features-screenshots{grid-template-columns:1fr;}
+      .pricing{flex-direction:column}
+      .price-card .price{font-size: 24px;}
+      .save{font-size: 12px;}
+      .cta-band{flex-direction:column; text-align: center; gap: 16px; padding: 12px;}
+      .cta-band div:first-child{margin-bottom: 8px;}
+      .cta-band .muted{font-size: 14px;}
+      .cta-band button{width:100%;}
+      .spacer{height: 40px;}
+      footer{flex-direction: column; text-align: center; gap: 16px;}
+    }
+
+    /* utility */
+    .muted{color:var(--muted)}
+    .pill{display:inline-block; background:rgba(255,255,255,0.03); padding:6px 10px; border-radius:999px; font-weight:600}
+  </style>
+</head>
+<body>
+  <div class="wrap">
+    <header>
+      <div class="brand">
+        <div class="logo">RP</div>
+        <div>
+          <h1>RehubPro</h1>
+          <div class="muted" style="font-size:13px">CRM для реабилитационных центров</div>
+        </div>
+      </div>
+      <nav>
+        <button class="btn-ghost" onclick="document.querySelector('.features').scrollIntoView({behavior: 'smooth'})">Функции</button>
+        <button class="btn-ghost" onclick="document.querySelector('.pricing').scrollIntoView({behavior: 'smooth'})">Тарифы</button>
+        <button class="btn">Попробовать демо</button>
+      </nav>
+    </header>
+
+    <section class="hero">
+      <div>
+        <span class="eyebrow">Для реабилитационных центров</span>
+        <h2>RehubPro — CRM, которая упрощает реабилитацию и повышает результат</h2>
+        <p class="lead">Ведите отчёты, отслеживайте задания и демонстрируйте реальный прогресс с помощью наглядной аналитики. Меньше бумажной работы, больше внимания клиентам.</p>
+
+        <div class="cta-row">
+          <button class="btn" onclick="window.open('https://wa.me/77777777777', '_blank')">Попробовать демо</button>
+          <button class="btn-ghost" onclick="window.open('https://wa.me/77777777777', '_blank')">Запросить консультацию</button>
+        </div>
+
+        <div style="margin-top:20px; display:flex; gap:10px; flex-wrap:wrap">
+          <div class="pill">Ежедневные отчёты</div>
+          <div class="pill">Аналитика прогресса</div>
+          <div class="pill">Учёт финансов</div>
+        </div>
+      </div>
+
+      <div class="screenshot-card">
+        <div class="screenshot" id="hero-screenshot">Здесь будет скрин главной доски
+          <small>Замените на файл: <code>screens/hero.png</code></small>
+        </div>
+      </div>
+    </section>
+
+    <div class="spacer"></div>
+    <div class="spacer"></div>
+    <section>
+      <div style="display:flex; justify-content:space-between; align-items:end">
+        <h2 style="margin-bottom:1px">Что внутри</h2>
+      </div>
+
+      <div class="features">
+        <div class="feature">
+          <h3>Главная доска резидентов</h3>
+          <p>Вся ключевая информация — на одном экране. Сразу видно задания, зависимости и текущий этап.</p>
+        </div>
+
+        <div class="feature">
+          <h3>Трекинг заданий</h3>
+          <p>История выполнения заданий хранится в системе — ни одного потерянного листа.</p>
+        </div>
+
+        <div class="feature">
+          <h3>Ежедневные отчёты</h3>
+          <p>Заполнение занимает минуты, данные сразу готовы для аналитики.</p>
+        </div>
+
+        <div class="feature">
+          <h3>Аналитика прогресса</h3>
+          <p>Красивые графики для презентаций и внутреннего контроля — видно реальные изменения.</p>
+        </div>
+
+        <div class="feature">
+          <h3>Напоминания</h3>
+          <p>Авто-напоминания для приёма лекарств и важных событий — как будильник.</p>
+        </div>
+
+        <div class="feature">
+          <h3>Хранилище и экспорт</h3>
+          <p>Централизованное хранилище файлов и экспорт отчётов в PDF / TXT.</p>
+        </div>
+      </div>
+
+
+       <div class="features-screenshots" style="display:grid; grid-template-columns:repeat(3,1fr); gap:16px; margin-top:18px">
+    <div class="screenshot-card">
+        <div class="screenshot">
+            <img src="screens/board.png" alt="Скриншот: Доска резидентов" style="width:100%; height:auto; border-radius:12px;">
+        </div>
+    </div>
+    <div class="screenshot-card">
+        <div class="screenshot">
+            <img src="screens/report.png" alt="Скриншот: Отчёт" style="width:100%; height:auto; border-radius:12px;">
+        </div>
+    </div>
+    <div class="screenshot-card">
+        <div class="screenshot">
+            <img src="screens/analytics.png" alt="Скриншот: Аналитика" style="width:100%; height:auto; border-radius:12px;">
+        </div>
+    </div>
+</div>
+    </section>
+
+    <div class="spacer"></div>
+
+    <section style="margin-top:80px">
+      <h2 style="margin-bottom:12px">Тарифы</h2>
+      <p class="muted">Выбирайте удобный план — чем дольше подписка, тем больше выгода.</p>
+
+      <div class="pricing">
+        <div class="price-card">
+          <div class="muted">1 месяц</div>
+          <div class="price"><span style="white-space: nowrap;">50 000 ₸</span></div>
+          <p class="muted">Подходит для коротких проектов и тестирования.</p>
+        </div>
+
+        <div class="price-card">
+          <div class="muted">3 месяца</div>
+          <div class="price">
+            <span style="white-space: nowrap;">140 000 ₸</span>
+            <span class="save">(экономия 10 000 ₸)</span>
+          </div>
+          <p class="muted">Оптимально для пилота центра — быстрая окупаемость.</p>
+        </div>
+
+        <div class="price-card">
+          <div class="muted">6 месяцев</div>
+          <div class="price">
+            <span style="white-space: nowrap;">260 000 ₸</span>
+            <span class="save">(экономия 40 000 ₸)</span>
+          </div>
+          <p class="muted">Лучший баланс цены и стабильности работы.</p>
+        </div>
+
+        <div class="price-card">
+          <div class="muted">12 месяцев</div>
+          <div class="price">
+            <span style="white-space: nowrap;">500 000 ₸</span>
+            <span class="save">(экономия 100 000 ₸)</span>
+          </div>
+          <p class="muted">Максимальная выгода и приоритетная поддержка.</p>
+        </div>
+      </div>
+
+      <div style="margin-top:12px; color:var(--muted)"><strong>Настройка и обучение:</strong> оплачивается отдельно — <strong>от 50 000 ₸</strong> (или по запросу, в зависимости от требований).</div>
+    </section>
+
+    <section class="cta-band">
+      <div>
+        <div style="font-weight:800; font-size:18px">Готовы вывести центр на новый уровень?</div>
+        <div class="muted">Получите бесплатную консультацию и демо-доступ — настройка под ваши процессы.</div>
+      </div>
+      <div style="display:flex; gap:10px">
+        <button class="btn" onclick="window.open('https://wa.me/77777777777', '_blank')">Запросить демо</button>
+        <button class="btn-ghost" onclick="window.open('https://wa.me/77777777777', '_blank')">Связаться с нами</button>
+      </div>
+    </section>
+
+    <footer>
+      <div>© RehubPro — все права защищены</div>
+      <div style="display:flex; align-items:center; gap:16px">
+        <div class="muted">Политика конфиденциальности • Контакты</div>
+        <div class="social-icons">
+          <a href="https://wa.me/77777777777" class="social-icon" target="_blank">
+            <svg width="18" height="18" viewBox="0 0 24 24" fill="currentColor">
+              <path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347m-5.421 7.403h-.004a9.87 9.87 0 01-5.031-1.378l-.361-.214-3.741.982.998-3.648-.235-.374a9.86 9.86 0 01-1.51-5.26c.001-5.45 4.436-9.884 9.888-9.884 2.64 0 5.122 1.03 6.988 2.898a9.825 9.825 0 012.893 6.994c-.003 5.45-4.437 9.884-9.885 9.884m8.413-18.297A11.815 11.815 0 0012.05 0C5.495 0 .16 5.335.157 11.892c0 2.096.547 4.142 1.588 5.945L.057 24l6.305-1.654a11.882 11.882 0 005.683 1.448h.005c6.554 0 11.89-5.335 11.893-11.893A11.821 11.821 0 0020.89 3.097"/>
+            </svg>
+          </a>
+          <a href="https://instagram.com/rehubpro" class="social-icon" target="_blank">
+            <svg width="18" height="18" viewBox="0 0 24 24" fill="currentColor">
+              <path d="M12 2.163c3.204 0 3.584.012 4.85.07 3.252.148 4.771 1.691 4.919 4.919.058 1.265.069 1.645.069 4.849 0 3.205-.012 3.584-.069 4.849-.149 3.225-1.664 4.771-4.919 4.919-1.266.058-1.644.07-4.85.07-3.204 0-3.584-.012-4.849-.07-3.26-.149-4.771-1.699-4.919-4.92-.058-1.265-.07-1.644-.07-4.849 0-3.204.013-3.583.07-4.849.149-3.227 1.664-4.771 4.919-4.919 1.266-.057 1.645-.069 4.849-.069zm0-2.163c-3.259 0-3.667.014-4.947.072-4.358.2-6.78 2.618-6.98 6.98-.059 1.281-.073 1.689-.073 4.948 0 3.259.014 3.668.072 4.948.2 4.358 2.618 6.78 6.98 6.98 1.281.058 1.689.072 4.948.072 3.259 0 3.668-.014 4.948-.072 4.354-.2 6.782-2.618 6.979-6.98.059-1.28.073-1.689.073-4.948 0-3.259-.014-3.667-.072-4.947-.196-4.354-2.617-6.78-6.979-6.98-1.281-.059-1.69-.073-4.949-.073zM12 5.838c-3.403 0-6.162 2.759-6.162 6.162s2.759 6.163 6.162 6.163 6.162-2.759 6.162-6.163c0-3.403-2.759-6.162-6.162-6.162zm0 10.162c-2.209 0-4-1.79-4-4 0-2.209 1.791-4 4-4s4 1.791 4 4c0 2.21-1.791 4-4 4zm6.406-11.845c-.796 0-1.441.645-1.441 1.44s.645 1.44 1.441 1.44c.795 0 1.439-.645 1.439-1.44s-.644-1.44-1.439-1.44z"/>
+            </svg>
+          </a>
+        </div>
+      </div>
+    </footer>
+  </div>
+</body>
+</html>
